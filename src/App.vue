@@ -4,7 +4,14 @@ import MyDetails from './components/MyDetails.vue';
 
 <template>
     <h1>Learning slots in Vue 3</h1>
-    <MyDetails title="Custom title">
+    <MyDetails>
+        <template #title="{isOpen}">
+            <button>
+                <template v-if="isOpen"> - </template>
+                <template v-else> + </template>
+            </button>
+            Title
+        </template>
         <p>Details content</p>
     </MyDetails>
 </template>

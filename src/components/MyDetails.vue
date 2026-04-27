@@ -1,13 +1,16 @@
 <script setup lang="ts">
-const {title = 'Spoiler'} = defineProps<{
-    title?: string,
-}>()
+import { ref } from 'vue';
+
+const isOpen = ref(false);
+
 </script>
 
 <template>
     <div class="details">
-        <div class="title">{{ title }}</div>
-        <div class="content"><slot></slot></div>
+        <div @click="isOpen = !isOpen" class="title">
+            <slot name="title" :isOpen>Spoiler</slot>
+        </div>
+        <div v-show="isOpen" class="content"><slot></slot></div>
     </div>
 </template>
 
