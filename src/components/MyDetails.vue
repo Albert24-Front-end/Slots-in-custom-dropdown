@@ -1,16 +1,25 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, computed, useSlots } from 'vue';
 
 const isOpen = ref(false);
+const slots = useSlots();
 
+function toggleDetails() {
+    isOpen.value = !isOpen.value;
+}
+
+const extraProps = computed(() => slots.title ? {/* no props */} : {
+    role: "button",
+    onClick: toggleDetails
+})
 </script>
 
 <template>
     <div class="details">
-        <div @click="isOpen = !isOpen" class="title">
-            <slot name="title" :isOpen>Spoiler</slot>
+        <div v-bind="extraProps" class="title">
+            <slot name="title" :isOpen :toggleDetails>Spoiler</slot>
         </div>
-        <div v-show="isOpen" class="content"><slot :isOpen>Default filler</slot></div>
+        <div v-show="isOpen" class="content"><slot>Default filler</slot></div>
     </div>
 </template>
 

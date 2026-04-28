@@ -5,13 +5,13 @@ import MyDetails from './components/MyDetails.vue';
 <template>
     <h1>Learning slots in Vue 3</h1>
     <MyDetails>
-        <template #title="{isOpen}">
-            <button>
+        <template #title="{isOpen, toggleDetails}">
+            <button @click="toggleDetails">
                 <template v-if="isOpen"> - </template>
                 <template v-else> + </template>
             </button>
             Title
         </template>
-        <template #default="{ isOpen }"><p>Details content {{ isOpen }}</p></template>
+        <p>Details content</p>
     </MyDetails>
 </template>
