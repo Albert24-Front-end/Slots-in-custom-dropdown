@@ -12,6 +12,6 @@ import MyDetails from './components/MyDetails.vue';
             </button>
             Title
         </template>
-        <p>Details content</p>
+        <template #default="{ isOpen }"><p>Details content {{ isOpen }}</p></template>
     </MyDetails>
 </template>

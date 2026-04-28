@@ -10,7 +10,7 @@ const isOpen = ref(false);
         <div @click="isOpen = !isOpen" class="title">
             <slot name="title" :isOpen>Spoiler</slot>
         </div>
-        <div v-show="isOpen" class="content"><slot></slot></div>
+        <div v-show="isOpen" class="content"><slot :isOpen>Default filler</slot></div>
     </div>
 </template>
 
